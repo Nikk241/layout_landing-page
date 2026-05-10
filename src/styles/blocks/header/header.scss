@@ -1,0 +1,54 @@
+@import './menu';
+
+// #region Header
+.header {
+  height: 100vh;
+  box-sizing: border-box;
+  background-image: url('../img/mybike-main-header-mini-photo.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &__title {
+    @include content-header-title-font-size;
+
+    color: $main-text-color;
+    font-weight: 700;
+    letter-spacing: -1.5px;
+    font-style: Bold;
+    margin: 0;
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 88px;
+  }
+}
+
+.icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background-size: cover;
+
+  &--phone {
+    background-image: url('../img/icon-phone.png');
+  }
+
+  &--menu {
+    background-image: url('../img/icon-menu.png');
+  }
+
+  &--closing{
+    background-image: url('../img/menu-close-icon.png');
+  }
+
+  @media(min-width: 744px){
+    width: 32px;
+    height: 32px;
+  }
+}
