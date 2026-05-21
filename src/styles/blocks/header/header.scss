@@ -4,7 +4,7 @@
 .header {
   height: 100vh;
   box-sizing: border-box;
-  background-image: url('../img/mybike-main-header-mini-photo.jpg');
+  background-image: url('../img/mybike-main-header-photo.svg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: right;
@@ -26,6 +26,14 @@
     display: flex;
     justify-content: center;
     padding-bottom: 88px;
+
+    @include on-tablet {
+      padding-bottom: 130px;
+    }
+
+    @include on-desktop {
+      padding-bottom: 203px;
+    }
   }
 }
 
@@ -36,18 +44,42 @@
   background-size: cover;
 
   &--phone {
-    background-image: url('../img/icon-phone.png');
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-image: url('../img/icon-phone.svg');
+
+    &:hover::before {
+      content: '+1 234 555-55-55';
+      font-size: 12px;
+      line-height: 16px;
+      color: $main-text-color;
+      position: absolute;
+      width: 150px;
+      overflow: hidden;
+      right: 20px;
+    }
   }
 
   &--menu {
-    background-image: url('../img/icon-menu.png');
+    background-image: url('../img/icon-menu.svg');
+    transition-duration: 0.2s;
+
+    &:hover {
+      background-image: url('../img/icon-menu-hover.svg');
+    }
   }
 
-  &--closing{
-    background-image: url('../img/menu-close-icon.png');
+  &--closing {
+    background-image: url('../img/menu-close-icon.svg');
+    transition-duration: 0.3s;
+
+    &:hover {
+      transform: scale(1.2);
+    }
   }
 
-  @media(min-width: 744px){
+  @include on-tablet {
     width: 32px;
     height: 32px;
   }

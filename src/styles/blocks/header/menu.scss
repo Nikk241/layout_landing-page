@@ -5,14 +5,19 @@
   background-color: $header-menu-background-color;
   font-weight: 600;
   text-transform: uppercase;
+  overflow: auto; /* to scroll the menu if needed */
 
   &:target {
     pointer-events: all;
     opacity: 1;
   }
 
-  &__top{
+  &__top {
     margin-bottom: 24px;
+    position: sticky; /* to keep cross always visible */
+    top: 0;
+    z-index: 1;
+    background-color: $header-menu-background-color;
   }
 
   &__nav {
@@ -30,6 +35,11 @@
     font-size: 16px;
     line-height: 27px;
     margin-bottom: 16px;
+    transition-duration: 0.2s;
+
+    &:hover {
+      color: $header-menu-text-color-hover;
+    }
   }
 
   &__book-ride {
@@ -42,6 +52,10 @@
     border-bottom: 1px solid rgba(29, 29, 29, 1);
     width: fit-content;
     padding-bottom: 8px;
+
+    &:hover {
+      color: $header-menu-text-color-hover;
+    }
   }
 }
 
@@ -53,39 +67,65 @@
 
   @include content-padding-inline;
 
-  &__logo{
-    display: flex;
-  }
-
   &__icons {
     display: flex;
     gap: 24px;
+
+    @include on-tablet {
+      gap: 32px;
+    }
+  }
+
+  &__logo {
+    display: flex;
+    width: 130px;
+    height: 38px;
+
+    @include on-tablet {
+      height: 56px;
+      width: 187px;
+    }
   }
 }
 
-.nav__list {
-  display: flex;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  color: inherit;
-  flex-direction: column;
-  gap: 32px;
+.nav {
+  &__list {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    color: inherit;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: inherit;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+    transition-duration: 0.3s;
+
+    &:hover {
+      border-bottom: 1px solid rgba(29, 29, 29, 1);
+      width: fit-content;
+      padding-bottom: 8px;
+    }
+  }
 }
 
-.nav__link {
-  text-decoration: none;
-  color: inherit;
-  font-size: 22px;
-  line-height: 22px;
-  letter-spacing: 2px;
-}
+.page {
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    pointer-events: none;
+    opacity: 0;
+  }
 
-.page__menu {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  pointer-events: none;
-  opacity: 0;
+  &:has(.page__menu:target) {
+    overflow: hidden; /* not to scroll the page */
+  }
 }
