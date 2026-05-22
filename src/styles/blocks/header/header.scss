@@ -12,6 +12,10 @@
   flex-direction: column;
   justify-content: space-between;
 
+  @include on-tablet{
+    background-position: center;
+  }
+
   &__title {
     @include content-header-title-font-size;
 
