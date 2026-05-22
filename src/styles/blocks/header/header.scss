@@ -53,17 +53,19 @@
     align-items: center;
     background-image: url('../img/icon-phone.svg');
 
-    &:hover::before {
-      content: '+1 234 555-55-55';
-      font-size: 12px;
-      line-height: 16px;
-      color: $main-text-color;
-      position: absolute;
-      width: 150px;
-      overflow: hidden;
-      right: 20px;
+    @include on-desktop{
+      &:hover::before {
+        content: '+1 234 555-55-55';
+        font-size: 12px;
+        line-height: 16px;
+        color: $main-text-color;
+        position: absolute;
+        width: 150px;
+        overflow: hidden;
+        right: 20px;
+      }
     }
-  }
+    }
 
   &--menu {
     background-image: url('../img/icon-menu.svg');
